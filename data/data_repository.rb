@@ -1,9 +1,9 @@
 # @Author: Benjamin Held
 # @Date:   2015-05-31 14:28:43
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2018-01-28 21:15:59
+# @Last Modified time: 2019-04-11 19:58:59
 
-require_relative 'meta_data/meta_data'
+require_relative 'meta_data'
 
 # This class serves as a data repository storing the read data and handling the
 # meta information
