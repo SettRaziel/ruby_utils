@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-06-12 10:45:36
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-04-07 16:35:40
+# @Last Modified time: 2019-04-16 20:03:13
 
 # Parent module which holdes the classes dealing with reading and validating
 # the provided input parameters
@@ -14,7 +14,7 @@ module Parameter
   # grants access to the provided parameters and arguments
   # Will raise an NotImplementedError if the abstract methods are called
   # without an implementation in a child class
-  class ParameterRepository
+  class BaseParameterRepository
     # @return [Hash] Hash of valid parameters and their values
     attr_reader :parameters
 

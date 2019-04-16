@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-07-20 11:23:58
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-04-07 16:34:17
+# @Last Modified time: 2019-04-16 20:03:20
 
 module Parameter
 
@@ -12,7 +12,7 @@ module Parameter
   # or parameter combinations are provided
   # Will raise an NotImplementedError if the abstract methods are called
   # without an implementation in a child class
-  class ParameterHandler
+  class BaseParameterHandler
     # @return [ParameterRepository] repository which reads and stores the
     # parameter provided as arguments in script call
     attr_reader :repository
