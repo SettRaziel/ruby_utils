@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-07-25 12:17:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-05-03 20:11:52
+# @Last Modified time: 2019-05-03 20:22:24
 
 require_relative '../string/string'
 
@@ -15,7 +15,7 @@ class BasicHelpOutput
     initialize_output if (@parameters == nil)
     if (@parameters[parameter])
       puts "#{get_script_name} help:".light_yellow + "\n#{@parameters[parameter]}"
-    elsif (parameter == nil)
+    elsif (parameter)
       print_help
     else
       raise ArgumentError, "help entry for #{parameter} does not exist".red
