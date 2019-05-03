@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-07-25 12:17:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-04-30 21:13:50
+# @Last Modified time: 2019-05-03 20:11:52
 
 require_relative '../string/string'
 
@@ -14,7 +14,7 @@ class BasicHelpOutput
   def self.print_help_for(parameter)
     initialize_output if (@parameters == nil)
     if (@parameters[parameter])
-      puts 'Script help:'.light_yellow + "\n#{@parameters[parameter]}"
+      puts "#{get_script_name} help:".light_yellow + "\n#{@parameters[parameter]}"
     elsif (parameter == nil)
       print_help
     else
@@ -42,38 +42,49 @@ class BasicHelpOutput
   # method to specify and add the help entries with help text only
   def self.add_single_help_entries
       fail NotImplementedError, " Error: the subclass #{self.class} needs " \
-           "to implement the method: parse_header from its base class".red
+           "to implement the method: add_single_help_entries from its base" \
+           " class".red
    
   end
 
   # method to specify and add the help entries with help text and one argument
   def self.add_one_argument_help_entries
       fail NotImplementedError, " Error: the subclass #{self.class} needs " \
-           "to implement the method: parse_header from its base class".red
+           "to implement the method: add_one_argument_help_entries from its" \
+           " base class".red
   end
 
   # method to specify and add the help entries with help text and two arguments
   def self.add_two_argument_help_entries
       fail NotImplementedError, " Error: the subclass #{self.class} needs " \
-           "to implement the method: parse_header from its base class".red
+           "to implement the method: add_two_argument_help_entries from its" \
+           " base class".red
   end
 
   # method to print the headlines of the general help entry
   def self.print_help_head
       fail NotImplementedError, " Error: the subclass #{self.class} needs " \
-           "to implement the method: parse_header from its base class".red
+           "to implement the method: print_help_head from its base class".red
   end
 
   # method to print the invalid parameter combinations
   def self.print_invalid_combinations
       fail NotImplementedError, " Error: the subclass #{self.class} needs " \
-           "to implement the method: parse_header from its base class".red
+           "to implement the method: print_invalid_combinations from its" \
+           " base class".red
   end
 
   # method to print the available configuration parameter
   def self.print_configuration_parameter
       fail NotImplementedError, " Error: the subclass #{self.class} needs " \
-           "to implement the method: parse_header from its base class".red
+           "to implement the method: print_configuration_parameter from its" \
+           " base class".red
+  end
+
+  # method to set the name of the script project
+  def self.get_script_name
+      fail NotImplementedError, " Error: the subclass #{self.class} needs " \
+           "to implement the method: get_script_name from its base class".red
   end
 
   # method to add a (key, value) pair to the parameter hash

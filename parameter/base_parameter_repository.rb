@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-06-12 10:45:36
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-04-16 20:03:13
+# @Last Modified time: 2019-05-03 20:10:18
 
 # Parent module which holdes the classes dealing with reading and validating
 # the provided input parameters
@@ -103,7 +103,7 @@ module Parameter
         @parameters[:help] = @parameters.keys.last
       else
         # help without parameter => global help
-        @parameters[:help] = true
+        @parameters[:help] = nil
       end
     end
 
