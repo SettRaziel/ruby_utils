@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-06-12 10:45:36
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-05-03 20:23:10
+# @Last Modified time: 2019-06-07 21:04:45
 
 # Parent module which holdes the classes dealing with reading and validating
 # the provided input parameters
@@ -17,6 +17,8 @@ module Parameter
   class BaseParameterRepository
     # @return [Hash] Hash of valid parameters and their values
     attr_reader :parameters
+    # @return [Hash] Hash of parameter symbols and string representation
+    attr_reader :mapping
 
     # initialization
     # @param [Array] argv Array of input parameters
@@ -24,6 +26,7 @@ module Parameter
     # @raise [ArgumentError] for an invalid combination of script parameters
     def initialize(argv)
       @parameters = Hash.new()
+      define_base_mapping
       unflagged_arguments = [:file]
       has_read_file = false
       argv.each { |arg|
@@ -43,14 +46,22 @@ module Parameter
     # @return [boolean] if the size of the argument array is zero or not
     def process_base_argument(arg, unflagged_arguments)
       case arg
-        when '-h', '--help'    then check_and_set_helpvalue
-        when '-v', '--version' then @parameters[:version] = true
+        when *@mapping[:help]    then check_and_set_helpvalue
+        when *@mapping[:version] then @parameters[:version] = true
         when /-[a-z]|--[a-z]+/ then process_argument(arg, unflagged_arguments)
       else
         check_and_set_argument(unflagged_arguments.shift, arg)
       end
 
       return (unflagged_arguments.size == 0)
+    end
+
+    # method to define the input string values that will match a given paramter symbol
+    def define_base_mapping
+      @mapping = Hash.new()
+      @mapping[:help] = ['-h', '--help']
+      @mapping[:version] = ['-v', '--version']
+      define_mapping
     end
 
     # abstract method to read further argument and process it depending on its content
@@ -61,6 +72,12 @@ module Parameter
     def process_argument(arg, unflagged_arguments)
       fail NotImplementedError, " Error: the subclass #{self.class} needs " \
            "to implement the method: process_argument from its base class".red
+    end
+
+    # method to define the input string values that will match a given paramter symbol
+    def define_mapping
+      fail NotImplementedError, " Error: the subclass #{self.class} needs " \
+           "to implement the method: define_base_mapping from its base class".red
     end
 
     # creates a new entry for a parameter with one argument
