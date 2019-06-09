@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-07-20 11:23:58
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-04-16 20:03:20
+# @Last Modified time: 2019-06-09 21:24:46
 
 module Parameter
 
@@ -96,14 +96,25 @@ module Parameter
     end
 
     # checks if the second parameter occurs together with the first
-    # @param [String] p the present parameter
-    # @param [String] r the required parameter
-    # @param [Symbol] symbol the literal to check
+    # @param [Symbol] required the required symbol
+    # @param [Symbol] symbol the symbol that need the othner symbol
     # @raise [ArgumentError] if the second parameter is not present
-    def check_occurrence(p, r, symbol)
-      if (!@repository.parameters[symbol])
+    def check_occurrence(required, symbol)
+      if (@repository.parameters[symbol] && !@repository.parameters[required])
         raise ArgumentError,
-              " Error: #{p} requires the parameters of #{r}".red
+              " Error: #{@repository.mapping[symbol]} requires the parameters" \
+              " of #{@repository.mapping[required]}".red
+      end
+    end
+
+    # creates a constraint error if an invalid parameter combination occurs
+    # @param [Symbol] invalid the invalid symbol
+    # @param [Symbol] symbol the symbol that need the othner symbol
+    # @raise [ArgumentError] for an invalid parameter combination
+    def check_constraint(invalid, symbol)
+      if (@repository.parameters[symbol] && @repository.parameters[invalid])
+        raise ArgumentError, " Error: invalid parameter combination: " \
+              " #{@repository.mapping[symbol]} and #{@repository.mapping[invalid]}".red
       end
     end
 
