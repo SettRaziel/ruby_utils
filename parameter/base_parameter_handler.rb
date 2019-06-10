@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-07-20 11:23:58
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-09 21:24:46
+# @Last Modified time: 2019-06-10 15:19:56
 
 module Parameter
 
@@ -95,11 +95,11 @@ module Parameter
       end
     end
 
-    # checks if the second parameter occurs together with the first
+    # checks if the second parameter is required when the first symbol occurs
+    # @param [Symbol] symbol the symbol that needs the required symbol
     # @param [Symbol] required the required symbol
-    # @param [Symbol] symbol the symbol that need the othner symbol
-    # @raise [ArgumentError] if the second parameter is not present
-    def check_occurrence(required, symbol)
+    # @raise [ArgumentError] if the required parameter is not present
+    def check_occurrence(symbol, required)
       if (@repository.parameters[symbol] && !@repository.parameters[required])
         raise ArgumentError,
               " Error: #{@repository.mapping[symbol]} requires the parameters" \
