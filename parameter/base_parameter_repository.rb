@@ -1,13 +1,11 @@
 # @Author: Benjamin Held
 # @Date:   2015-06-12 10:45:36
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-07 21:04:45
+# @Last Modified time: 2019-06-30 12:29:13
 
 # Parent module which holdes the classes dealing with reading and validating
 # the provided input parameters
 module Parameter
-
-  require_relative '../string/string'
 
   # Abstract parameter repository to store the valid parameters of the script.
   # {#initialize} gets the provided parameters and fills a hash which
@@ -77,7 +75,7 @@ module Parameter
     # method to define the input string values that will match a given paramter symbol
     def define_mapping
       fail NotImplementedError, " Error: the subclass #{self.class} needs " \
-           "to implement the method: define_base_mapping from its base class".red
+           "to implement the method: define_mapping from its base class".red
     end
 
     # creates a new entry for a parameter with one argument

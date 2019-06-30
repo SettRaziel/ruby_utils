@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-07-20 11:23:58
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-11 18:57:26
+# @Last Modified time: 2019-06-30 12:29:50
 
 module Parameter
 
@@ -62,7 +62,7 @@ module Parameter
         ((\.\/)|(\.\.\/)+|(\/))? # relativ path or upwards or absolute
         ([\-\w\s]+\/)*           # 0-n subsirectories
         [\-\w\s]*[a-zA-Z0-9]     # filename
-        (\.[a-zA-Z0-9]+)?        # extension
+        (\.[a-zA-Z0-9]+)*        # point separated filename or extension
         \z                       # end of string
       }x
 
@@ -71,7 +71,7 @@ module Parameter
         ([A-Z]:)?\\?            # device name
         ([\-\w\s]+\\)*          # directories
         [\-\w\s]*[a-zA-Z0-9]    # filename
-        (\.[a-zA-Z0-9]+)?       # extension
+        (\.[a-zA-Z0-9]+)*       # point separated filename or extension
         \z                      # end of string
       }x
 
