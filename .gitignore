@@ -1,2 +1,6 @@
 # exclude dev folder
 dev/
+
+# documentation folders and files
+doc/
+.yardoc/
