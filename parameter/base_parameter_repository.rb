@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-06-12 10:45:36
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-06-30 12:29:13
+# @Last Modified time: 2020-02-15 15:49:22
 
 # Parent module which holdes the classes dealing with reading and validating
 # the provided input parameters
@@ -25,33 +25,34 @@ module Parameter
     def initialize(argv)
       @parameters = Hash.new()
       define_base_mapping
-      unflagged_arguments = [:file]
+      @unflagged_arguments = [:file]
       has_read_file = false
       argv.each { |arg|
         has_read_file?(has_read_file)
 
-        has_read_file =  process_base_argument(arg, unflagged_arguments)
+        has_read_file =  process_base_argument(arg)
       }
 
-    check_parameter_handling(unflagged_arguments.size)
+    check_parameter_handling(@unflagged_arguments.size)
     end
 
     private
 
+    attr :unflagged_arguments
+
     # method to read the given argument and process it depending on its content
     # @param [String] arg the given argument
-    # @param [Array] unflagged_arguments the argument array
     # @return [boolean] if the size of the argument array is zero or not
-    def process_base_argument(arg, unflagged_arguments)
+    def process_base_argument(arg)
       case arg
         when *@mapping[:help]    then check_and_set_helpvalue
         when *@mapping[:version] then @parameters[:version] = true
-        when /-[a-z]|--[a-z]+/ then process_argument(arg, unflagged_arguments)
+        when /-[a-z]|--[a-z]+/ then process_argument(arg)
       else
-        check_and_set_argument(unflagged_arguments.shift, arg)
+        check_and_set_argument(@unflagged_arguments.shift, arg)
       end
 
-      return (unflagged_arguments.size == 0)
+      return (@unflagged_arguments.size == 0)
     end
 
     # method to define the input string values that will match a given paramter symbol
@@ -64,10 +65,9 @@ module Parameter
 
     # abstract method to read further argument and process it depending on its content
     # @param [String] arg the given argument
-    # @param [Array] unflagged_arguments the argument array
     # @raise [NotImplementedError] if the child class does not implement this
     # method
-    def process_argument(arg, unflagged_arguments)
+    def process_argument(arg)
       fail NotImplementedError, " Error: the subclass #{self.class} needs " \
            "to implement the method: process_argument from its base class".red
     end
@@ -80,18 +80,16 @@ module Parameter
 
     # creates a new entry for a parameter with one argument
     # @param [Symbol] symbol the symbol of the argument
-    # @param [Array] unflagged_arguments the argument array
-    def create_argument_entry(symbol, unflagged_arguments)
+    def create_argument_entry(symbol)
       @parameters[symbol] = nil
-      unflagged_arguments.unshift(symbol)
+      @unflagged_arguments.unshift(symbol)
     end
 
     # creates a new entry for a parameter with two arguments
     # @param [Symbol] symbol the symbol of the argument
-    # @param [Array] unflagged_arguments the argument array
-    def create_two_argument_entry(symbol, unflagged_arguments)
+    def create_two_argument_entry(symbol)
       @parameters[symbol] = Array.new()
-      2.times{ unflagged_arguments.unshift(symbol) }
+      2.times{ @unflagged_arguments.unshift(symbol) }
     end
 
     # check if a parameter holds one or more arguments and adds the argument
