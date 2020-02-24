@@ -3,6 +3,7 @@ GEM
   specs:
     csv (3.1.2)
     power_assert (1.1.6)
+    rake (13.0.1)
     test-unit (3.3.5)
       power_assert
 
@@ -11,6 +12,7 @@ PLATFORMS
 
 DEPENDENCIES
   csv
+  rake
   test-unit
 
 BUNDLED WITH
