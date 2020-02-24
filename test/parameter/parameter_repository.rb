@@ -1,7 +1,9 @@
 # @Author: Benjamin Held
 # @Date:   2019-04-07 16:11:30
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-15 15:59:44
+# @Last Modified time: 2020-02-24 18:06:15
+
+require_relative '../../lib/parameter/parameter'
 
 module Parameter
 

@@ -1,12 +1,12 @@
 # @Author: Benjamin Held
 # @Date:   2019-04-07 16:08:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-24 17:37:34
+# @Last Modified time: 2020-02-24 18:06:40
+
+require_relative '../../lib/parameter/parameter'
+require_relative 'parameter_repository'
 
 module Parameter
-
-  require_relative '../../lib/parameter/parameter'
-  require_relative 'parameter_repository'
 
   class ParameterHandler < BaseParameterHandler
 
