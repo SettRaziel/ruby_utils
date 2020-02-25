@@ -17,9 +17,9 @@ PLATFORMS
 
 DEPENDENCIES
   csv
-  rake (>= 13.0.1)
+  rake (~> 13.0, >= 13.0.1)
   ruby_utils!
-  test-unit (>= 3.3.0)
+  test-unit (~> 3.3, >= 3.3.0)
 
 BUNDLED WITH
    2.1.4
