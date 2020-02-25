@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-05-30 08:57:40
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2015-09-30 17:38:05
+# @Last Modified time: 2020-02-25 19:30:44
 
 # Extension of the class String to modify a String in color and type
 # Note: \e stands for the esc code

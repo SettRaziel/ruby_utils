@@ -1,17 +1,15 @@
 # @Author: Benjamin Held
 # @Date:   2018-01-27 16:45:47
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2019-04-11 20:07:33
+# @Last Modified time: 2020-02-25 19:43:11
 
-# This module holds the classes that describe the meta information for the
-# different data sets.
-module MetaData
+require 'ruby_utils/string'
+
+module RubyUtils
 
   # Abstract base class that holds the common information that all types of
   # data sets share.
   class MetaData
-
-    require_relative '../string/string'
 
     # initialization
     # @param [Object] header_line the head line of a data set holding the 
@@ -32,6 +30,6 @@ module MetaData
            "to implement the method: parse_header from its base class".red
     end
 
-  end
+  end 
 
-end  
+end
