@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-05-30 21:00:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-25 19:26:10
+# @Last Modified time: 2020-02-25 21:05:15
 
 require 'csv'
 require 'ruby_utils/string'
@@ -23,6 +23,10 @@ module RubyUtils
     def initialize(filename, delimiter)
       begin
         @data = CSV.read(filename, { :col_sep => delimiter })
+        # remove nil entries
+        @data.each { |line|
+          line.compact!
+        }
       rescue StandardError => e
         raise IOError, e.message.concat('.').red
       end
