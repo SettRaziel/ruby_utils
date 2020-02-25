@@ -4,3 +4,6 @@ dev/
 # documentation folders and files
 doc/
 .yardoc/
+
+# exclude gem informations
+*.gem
