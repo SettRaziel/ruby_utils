@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-28 12:51:27
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-28 19:29:58
+# @Last Modified time: 2020-02-28 21:56:00
 
 require 'spec_helper'
 require 'ruby_utils/string'
@@ -32,6 +32,16 @@ describe RubyUtils::Parameter::ParameterRepository do
   end
 
   describe ".new" do
+    context "given the two element compare flag" do
+      it "create the repository with the correct flags" do
+        arguments = ['-c', 2, 4, 'filename']
+        parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
+        expect(parameter_repository.parameters[:compare]).to match([2, 4])
+      end
+    end
+  end
+
+  describe ".new" do
     context "given only the filename" do
       it "create the repository with the correct filename" do
         arguments = ['filename']
@@ -45,6 +55,17 @@ describe RubyUtils::Parameter::ParameterRepository do
     context "given no arguments for the initialization" do
       it "raise an argument error" do
         arguments = [ ]
+        expect { 
+          RubyUtils::Parameter::ParameterRepository.new(arguments)
+        }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
+  describe ".new" do
+    context "given an invalid parameter" do
+      it "raise an argument error" do
+        arguments = ['-1', 'filename']
         expect { 
           RubyUtils::Parameter::ParameterRepository.new(arguments)
         }.to raise_error(ArgumentError)
