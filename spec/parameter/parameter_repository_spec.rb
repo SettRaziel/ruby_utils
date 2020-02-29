@@ -2,10 +2,9 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-28 12:51:27
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-28 21:56:00
+# @Last Modified time: 2020-02-29 13:41:40
 
 require 'spec_helper'
-require 'ruby_utils/string'
 require_relative 'parameter_repository'
 
 describe RubyUtils::Parameter::ParameterRepository do
