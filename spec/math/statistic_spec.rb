@@ -2,10 +2,9 @@
 # @Author: Benjamin Held
 # @Date:   2020-03-03 21:47:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-03-04 16:27:15
+# @Last Modified time: 2020-03-06 16:53:43
 
 require 'spec_helper'
-require 'ruby_utils/statistic'
 
 describe RubyUtils::Statistic do
 

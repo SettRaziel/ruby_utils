@@ -2,10 +2,9 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-27 19:33:36
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-27 21:03:20
+# @Last Modified time: 2020-03-06 16:54:14
 
 require 'spec_helper'
-require 'ruby_utils/string'
 require_relative 'help_output'
 
 describe RubyUtils::HelpOutput do
