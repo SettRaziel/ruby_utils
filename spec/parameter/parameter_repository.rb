@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2019-04-07 16:11:30
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-28 19:35:59
+# @Last Modified time: 2020-03-11 18:43:06
 
 require 'ruby_utils/parameter'
 
@@ -9,6 +9,7 @@ module RubyUtils
 
   module Parameter
 
+    # Example implementation of the abstract class for tests
     class ParameterRepository < BaseParameterRepository
 
       # concrete method to read further argument and process it depending on its content

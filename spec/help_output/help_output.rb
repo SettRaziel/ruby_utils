@@ -2,12 +2,13 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-26 15:51:34
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-27 21:01:42
+# @Last Modified time: 2020-03-11 18:43:34
 
 require 'ruby_utils/help_output'
 
 module RubyUtils
 
+  # Example implementation of the abstract class for tests
   class HelpOutput < BasicHelpOutput
 
     private
