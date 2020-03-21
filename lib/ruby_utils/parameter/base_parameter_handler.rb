@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-07-20 11:23:58
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-25 19:26:53
+# @Last Modified time: 2020-03-21 12:13:33
 
 require 'ruby_utils/string'
 
@@ -25,7 +25,7 @@ module RubyUtils
       # @param [Array] argv array of input parameters
       def initialize(argv)
         initialize_repository(argv)
-        validate_parameters
+        base_validate_parameters
         check_parameter_constraints
       end
 
@@ -57,17 +57,27 @@ module RubyUtils
              "to implement the method: check_parameter_constraints from its base class".red
       end
 
-      # checks if the parsed filename is a valid unix or windows file name
+      # private method with calls of the different validations methods
+      def base_validate_parameters
+        check_for_valid_filepath if (@repository.parameters[:file])
+        validate_parameters
+      end
+
+      # checks if the parsed filename is a valid unix or windows file name  
+      # caution: this validation only checks for a valid syntax, it DOES NOT
+      # mitigate path traversal attacks or other attacks to move within the
+      # file system, security relevant directory should follow in the child
+      # class using the {#validate_parameters} method
       # @raise [ArgumentError] if filepath is not valid
       def check_for_valid_filepath
         filepath = @repository.parameters[:file]
         unixfile_regex= %r{
-          \A                       # start of string
-          ((\.\/)|(\.\.\/)+|(\/))? # relativ path or upwards or absolute
-          ([\-\w\s]+\/)*           # 0-n subsirectories
-          [\-\w\s]*[a-zA-Z0-9]     # filename
-          (\.[a-zA-Z0-9]+)*        # point separated filename or extension
-          \z                       # end of string
+          \A                              # start of string
+          ((\.\/)|(\.\.\/)+|(\/))?        # relativ path or upwards or absolute
+          ((\.\/)|(\.\.\/)+|[\-\w\s]+\/)* # 0-n subsirectories and relativ movement
+          [\-\w\s]*[a-zA-Z0-9]            # filename
+          (\.[a-zA-Z0-9]+)*               # point separated filename or extension
+          \z                              # end of string
         }x
 
         windowsfile_regex = %r{
