@@ -1,9 +1,9 @@
 # @Author: Benjamin Held
 # @Date:   2015-05-31 14:28:43
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-25 19:26:26
+# @Last Modified time: 2020-03-31 15:31:42
 
-require_relative 'meta_data'
+require 'ruby_utils/meta_data'
 
 module RubyUtils
 
