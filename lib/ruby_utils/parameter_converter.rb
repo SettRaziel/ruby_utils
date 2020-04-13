@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-03-18 17:03:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-03-18 21:02:55
+# @Last Modified time: 2020-04-13 11:21:34
 
 require 'ruby_utils/string'
 
@@ -49,12 +49,16 @@ module RubyUtils
     end
     
     # method to create an error message when rescuing an error
-    # @param [Symbol] parameter the requested parameter
+    # @param [Object] parameter the parameter that should be converted
     # @param [String] type a string containing the type for the error message
     # @raise [TypeError] raises a type error with a specific error message
     def self.create_error_message(parameter, type)
-      raise TypeError, 
-            "Error: at least one argument of #{parameter} is not a valid #{type}".red
+      if (parameter == nil)
+        raise ArgumentError, "Error: Given parameter is nil".red
+      else  
+        raise TypeError, 
+              "Error: the given argument #{parameter} is not a valid #{type}".red
+      end
     end
     private_class_method :create_error_message
 

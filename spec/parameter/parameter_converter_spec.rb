@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-03-18 17:13:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-03-18 20:59:34
+# @Last Modified time: 2020-04-13 11:24:29
 
 require 'spec_helper'
 require 'ruby_utils/parameter_converter'
@@ -37,6 +37,16 @@ describe RubyUtils::ParameterConverter do
     end
   end
 
+  describe "#convert_int_parameter" do
+    context "given nil as parameter value" do
+      it "fail to parse the value and abort" do
+        expect { 
+          RubyUtils::ParameterConverter.convert_int_parameter(nil)
+        }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
   describe "#convert_float_parameter" do
     context "given an float in string representation" do
       it "parse the float and return the vaule" do
@@ -59,6 +69,16 @@ describe RubyUtils::ParameterConverter do
         expect { 
           RubyUtils::ParameterConverter.convert_float_parameter("ABC")
         }.to raise_error(TypeError)
+      end
+    end
+  end
+
+  describe "#convert_float_parameter" do
+    context "given nil as parameter value" do
+      it "fail to parse the value and abort" do
+        expect { 
+          RubyUtils::ParameterConverter.convert_float_parameter(nil)
+        }.to raise_error(ArgumentError)
       end
     end
   end
@@ -87,6 +107,16 @@ describe RubyUtils::ParameterConverter do
         expect { 
           RubyUtils::ParameterConverter.convert_time_parameter("42")
         }.to raise_error(TypeError)
+      end
+    end
+  end
+
+  describe "#convert_time_parameter" do
+    context "given nil as parameter value" do
+      it "fail to parse the value and abort" do
+        expect { 
+          RubyUtils::ParameterConverter.convert_time_parameter(nil)
+        }.to raise_error(ArgumentError)
       end
     end
   end
