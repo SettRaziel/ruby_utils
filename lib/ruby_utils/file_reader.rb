@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-05-30 21:00:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-25 21:05:15
+# @Last Modified time: 2020-04-19 19:57:30
 
 require 'csv'
 require 'ruby_utils/string'
@@ -22,7 +22,7 @@ module RubyUtils
     # @raise [IOError] if an error occurs while the file is read
     def initialize(filename, delimiter)
       begin
-        @data = CSV.read(filename, { :col_sep => delimiter })
+        @data = CSV.read(filename, col_sep: delimiter)
         # remove nil entries
         @data.each { |line|
           line.compact!
