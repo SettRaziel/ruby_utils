@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-28 12:51:27
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-29 13:41:40
+# @Last Modified time: 2020-04-21 19:37:34
 
 require 'spec_helper'
 require_relative 'parameter_repository'
@@ -14,7 +14,7 @@ describe RubyUtils::Parameter::ParameterRepository do
       it "create the repository with the correct flags" do
         arguments = ['-i', 2, 4, 'filename']
         parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
-        expect(parameter_repository.parameters[:interval]).to match([2, 4])
+        expect(parameter_repository.parameters[:interval]).to eq([2, 4])
       end
     end
   end
@@ -35,7 +35,7 @@ describe RubyUtils::Parameter::ParameterRepository do
       it "create the repository with the correct flags" do
         arguments = ['-c', 2, 4, 'filename']
         parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
-        expect(parameter_repository.parameters[:compare]).to match([2, 4])
+        expect(parameter_repository.parameters[:compare]).to eq([2, 4])
       end
     end
   end
@@ -45,7 +45,7 @@ describe RubyUtils::Parameter::ParameterRepository do
       it "create the repository with the correct filename" do
         arguments = ['filename']
         parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
-        expect(parameter_repository.parameters[:file]).to match('filename')
+        expect(parameter_repository.parameters[:file]).to eq('filename')
       end
     end
   end
@@ -77,7 +77,7 @@ describe RubyUtils::Parameter::ParameterRepository do
       it "set the flag for version output" do
         arguments = ['-v', 'filename']
         parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
-        expect(parameter_repository.parameters[:version]).to match(true)
+        expect(parameter_repository.parameters[:version]).to eq(true)
       end
     end
   end
@@ -87,7 +87,7 @@ describe RubyUtils::Parameter::ParameterRepository do
       it "set the flag for help output" do
         arguments = ['-h', 'filename']
         parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
-        expect(parameter_repository.parameters[:help]).to match(true)
+        expect(parameter_repository.parameters[:help]).to eq(true)
       end
     end
   end
@@ -97,7 +97,7 @@ describe RubyUtils::Parameter::ParameterRepository do
       it "set the flag for help output with the type" do
         arguments = ['-t', '-h', 'filename']
         parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
-        expect(parameter_repository.parameters[:help]).to match(:type)
+        expect(parameter_repository.parameters[:help]).to eq(:type)
       end
     end
   end
