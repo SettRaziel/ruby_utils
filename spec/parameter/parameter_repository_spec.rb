@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-28 12:51:27
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-21 19:37:34
+# @Last Modified time: 2020-05-08 21:14:51
 
 require 'spec_helper'
 require_relative 'parameter_repository'
@@ -62,9 +62,20 @@ describe RubyUtils::Parameter::ParameterRepository do
   end
 
   describe ".new" do
-    context "given an invalid parameter" do
+    context "given an invalid numerical parameter" do
       it "raise an argument error" do
         arguments = ['-1', 'filename']
+        expect { 
+          RubyUtils::Parameter::ParameterRepository.new(arguments)
+        }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
+  describe ".new" do
+    context "given an invalid character parameter" do
+      it "raise an argument error" do
+        arguments = ['-a', 'filename']
         expect { 
           RubyUtils::Parameter::ParameterRepository.new(arguments)
         }.to raise_error(ArgumentError)
