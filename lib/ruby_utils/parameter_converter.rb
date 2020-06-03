@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-03-18 17:03:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-13 11:21:34
+# @Last Modified time: 2020-06-03 19:11:21
 
 require 'ruby_utils/string'
 
@@ -52,7 +52,7 @@ module RubyUtils
     # @param [Object] parameter the parameter that should be converted
     # @param [String] type a string containing the type for the error message
     # @raise [TypeError] raises a type error with a specific error message
-    def self.create_error_message(parameter, type)
+    private_class_method def self.create_error_message(parameter, type)
       if (parameter == nil)
         raise ArgumentError, "Error: Given parameter is nil".red
       else  
@@ -60,7 +60,6 @@ module RubyUtils
               "Error: the given argument #{parameter} is not a valid #{type}".red
       end
     end
-    private_class_method :create_error_message
 
   end
 
