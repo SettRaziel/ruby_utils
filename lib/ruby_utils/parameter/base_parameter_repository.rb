@@ -1,9 +1,9 @@
 # @Author: Benjamin Held
 # @Date:   2015-06-12 10:45:36
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-25 19:26:40
+# @Last Modified time: 2020-09-20 13:04:26
 
-require 'ruby_utils/string'
+require "ruby_utils/string"
 
 module RubyUtils
 

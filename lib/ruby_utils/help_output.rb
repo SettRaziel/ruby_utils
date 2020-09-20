@@ -1,9 +1,9 @@
 # @Author: Benjamin Held
 # @Date:   2015-07-25 12:17:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-02-25 19:25:54
+# @Last Modified time: 2020-09-20 13:05:02
 
-require 'ruby_utils/string'
+require "ruby_utils/string"
 
 module RubyUtils
 
@@ -32,10 +32,10 @@ module RubyUtils
     # method to initialize the hash containing the help entries
     def self.initialize_output
       @parameters = Hash.new()
-      add_simple_text(:help, ' -h, --help     ', 'show help text')
+      add_simple_text(:help, " -h, --help     ", "show help text")
       add_simple_text(:version,
-                      ' -v, --version  ',
-                      'prints the current version of the project')
+                      " -v, --version  ",
+                      "prints the current version of the project")
       add_single_help_entries
       add_one_argument_help_entries
       add_two_argument_help_entries
@@ -111,7 +111,7 @@ module RubyUtils
     # @param [String] parameter the string part containing the required parameter
     # @param [String] text the string part containing the description text
     def self.add_single_argument_text(symbol, argument, parameter, text)
-      add_text(symbol, build_entry(argument.light_blue, 'argument:',
+      add_text(symbol, build_entry(argument.light_blue, "argument:",
                                           parameter, text))
     end
 
@@ -123,7 +123,7 @@ module RubyUtils
     #   required parameters
     # @param [String] text the string part containing the description text
     def self.add_dual_argument_text(symbol, argument, parameters, text)
-      add_text(symbol, build_entry(argument.light_blue, 'arguments:',
+      add_text(symbol, build_entry(argument.light_blue, "arguments:",
                                           parameters, text))
     end
 
