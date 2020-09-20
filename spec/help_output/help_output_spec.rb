@@ -2,10 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-27 19:33:36
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-03-06 16:54:14
+# @Last Modified time: 2020-09-20 16:53:37
 
-require 'spec_helper'
-require_relative 'help_output'
+require "spec_helper"
+require_relative "help_output"
 
 describe RubyUtils::HelpOutput do
 

@@ -2,10 +2,10 @@
 # @Author: Benjamin Held
 # @Date:   2020-03-18 17:13:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-04-21 19:37:13
+# @Last Modified time: 2020-09-20 16:53:57
 
-require 'spec_helper'
-require 'ruby_utils/parameter_converter'
+require "spec_helper"
+require "ruby_utils/parameter_converter"
 
 describe RubyUtils::ParameterConverter do
 

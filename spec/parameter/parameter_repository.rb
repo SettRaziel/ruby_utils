@@ -1,9 +1,9 @@
 # @Author: Benjamin Held
 # @Date:   2019-04-07 16:11:30
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-03-11 18:43:06
+# @Last Modified time: 2020-09-20 16:55:03
 
-require 'ruby_utils/parameter'
+require "ruby_utils/parameter"
 
 module RubyUtils
 
@@ -16,11 +16,11 @@ module RubyUtils
       # @param [String] arg the given argument
       def process_argument(arg)
         case arg
-          when '-i', '--interval'
+          when "-i", "--interval"
             create_two_argument_entry(:interval)
-          when '-c', '--compare' 
+          when "-c", "--compare" 
             create_two_argument_entry(:compare)
-          when '-t', '--type'
+          when "-t", "--type"
             create_argument_entry(:type)
           else
             raise_invalid_parameter(arg)
@@ -29,9 +29,9 @@ module RubyUtils
 
       # method to define the input string values that will match a given paramter symbol
       def define_mapping
-        @mapping[:interval] = ['-i', '--interval']
-        @mapping[:compare] = ['-c', '--compare']
-        @mapping[:type] = ['-t', '--type']
+        @mapping[:interval] = ["-i", "--interval"]
+        @mapping[:compare] = ["-c", "--compare"]
+        @mapping[:type] = ["-t", "--type"]
       end
 
     end
