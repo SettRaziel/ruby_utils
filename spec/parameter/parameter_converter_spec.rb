@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-03-18 17:13:53
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-09-20 16:53:57
+# @Last Modified time: 2020-11-07 18:52:58
 
 require "spec_helper"
 require "ruby_utils/parameter_converter"
@@ -87,6 +87,14 @@ describe RubyUtils::ParameterConverter do
     context "given an date in string representation" do
       it "parse the time and return the vaule" do
         expect(RubyUtils::ParameterConverter.convert_time_parameter("2020-02-23")).to eq(Time.parse("2020-02-23"))
+      end
+    end
+  end
+
+  describe "#convert_time_parameter" do
+    context "given an date in string representation" do
+      it "parse the time and return the vaule" do
+        expect(RubyUtils::ParameterConverter.convert_time_parameter("18560101")).to eq(Time.parse("18560101"))
       end
     end
   end
