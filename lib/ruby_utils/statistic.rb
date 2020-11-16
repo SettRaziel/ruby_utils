@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2016-04-24 18:33:55
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-03-04 16:24:39
+# @Last Modified time: 2020-11-16 20:44:29
 
 module RubyUtils
 
@@ -25,37 +25,21 @@ module RubyUtils
     # @param [Array] data a list of values
     # @return [Float] the maximum value of the input data
     def self.max_value(data)
-      max_value = data[0]
-      data.each { |value|
-        max_value = value if (value > max_value)
-      }
-
-      return max_value
+      data.max
     end
 
     # method to determine the minimum value of the given data
     # @param [Array] data a list of values
     # @return [Float] the minimum value of the input data
     def self.min_value(data)
-      min_value = data[0]
-      data.each { |value|
-        min_value = value if (value < min_value)
-      }
-
-      return min_value
+      data.min
     end
 
     # method to determine the extreme value min and max of the given data
     # @param [Array] data a list of values
-    # @return [Array] the minimum value of the input data
+    # @return [ExtremeValues] the extreme values of the input data
     def self.extreme_values(data)
-      max_value = data[0]
-      min_value = data[0]
-      data.each { |value|
-        max_value = value if (value > max_value)
-        min_value = value if (value < min_value)
-      }      
-      return ExtremeValues.new(min_value, max_value)
+      ExtremeValues.new(data.min, data.max)
     end
 
   end
