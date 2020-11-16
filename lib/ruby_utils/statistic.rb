@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2016-04-24 18:33:55
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-11-16 20:44:29
+# @Last Modified time: 2020-11-16 20:53:07
 
 module RubyUtils
 
@@ -19,6 +19,18 @@ module RubyUtils
       }
     
       mean / data.length
+    end
+
+    # method to calculate the median of the given data. For a list with an odd number
+    # of elements the median is the value in the middle of the list. For an even number
+    # of elements the mean value of the two middle numbers is used
+    # @param [Array] data a list of values that have a natural order and can
+    #   determine a mean value
+    # @return [Float] the median of the input data
+    def self.median(data)
+      sorted = data.sort
+      return sorted[data.length / 2] if (data.length % 2 == 1)
+      (sorted[data.length / 2] + sorted[data.length / 2 - 1]) / 2.0
     end
 
     # method to determine the maximum value of the given data
