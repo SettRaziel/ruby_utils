@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-03-03 21:47:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-11-16 20:56:54
+# @Last Modified time: 2020-11-17 18:34:18
 
 require "spec_helper"
 
@@ -60,6 +60,24 @@ describe RubyUtils::Statistic do
       it "calculate the median" do
         data = [1, 42, 4, 2, 3, 3, 2, 1]
         expect(RubyUtils::Statistic.median(data)).to eq(2.5)
+      end
+    end
+  end
+
+  describe "#mode" do
+    context "given an array of values" do
+      it "calculate the single mode" do
+        data = [1, 42, 4, 42, 3, 3, 42, 2, 1]
+        expect(RubyUtils::Statistic.mode(data)).to eq([42])
+      end
+    end
+  end
+
+  describe "#mode" do
+    context "given an array of values" do
+      it "calculate the bimodal mode" do
+        data = [1, 3, 42, 4, 42, 3, 3, 42, 2, 1]
+        expect(RubyUtils::Statistic.mode(data)).to eq([3, 42])
       end
     end
   end

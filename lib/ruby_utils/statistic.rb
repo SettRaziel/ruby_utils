@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2016-04-24 18:33:55
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-11-16 20:53:07
+# @Last Modified time: 2020-11-17 18:37:09
 
 module RubyUtils
 
@@ -31,6 +31,37 @@ module RubyUtils
       sorted = data.sort
       return sorted[data.length / 2] if (data.length % 2 == 1)
       (sorted[data.length / 2] + sorted[data.length / 2 - 1]) / 2.0
+    end
+
+    # method to calculate the mode for the given data. Since it is frequent that more than
+    # one value is the mode of the data set an array is returned, which holds a least one
+    # value representing the mode.
+    # @param [Array] data a list of values that have a natural order and can
+    #   determine a mean value
+    # @return [Array] the mode(s) of the input data
+    def self.mode(data)
+      frequency = Hash.new()
+      data.each { |value|
+        if (frequency[value] == nil)
+          frequency[value] = 1
+        else
+          frequency[value] = frequency[value] + 1
+        end 
+      }
+
+      mode = Array.new()
+      count = 0
+      frequency.each_pair { |key, value|
+        if (value > count)
+          mode = Array.new()
+          mode << key
+          count = value
+        elsif (value == count)
+          mode << key
+        end 
+      }
+
+      mode.sort
     end
 
     # method to determine the maximum value of the given data
