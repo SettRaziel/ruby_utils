@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-03-03 21:47:25
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-11-17 18:34:18
+# @Last Modified time: 2020-11-18 19:17:49
 
 require "spec_helper"
 
@@ -78,6 +78,16 @@ describe RubyUtils::Statistic do
       it "calculate the bimodal mode" do
         data = [1, 3, 42, 4, 42, 3, 3, 42, 2, 1]
         expect(RubyUtils::Statistic.mode(data)).to eq([3, 42])
+      end
+    end
+  end
+
+  describe "#determine_mode_values" do
+    context "given the call of the private method" do
+      it "should throw a NoMethodError" do
+        expect { 
+          RubyUtils::Statistic.determine_mode_values(Hash.new())
+        }.to raise_error(NoMethodError)
       end
     end
   end

@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2016-04-24 18:33:55
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-11-17 18:37:09
+# @Last Modified time: 2020-11-18 19:17:40
 
 module RubyUtils
 
@@ -49,19 +49,7 @@ module RubyUtils
         end 
       }
 
-      mode = Array.new()
-      count = 0
-      frequency.each_pair { |key, value|
-        if (value > count)
-          mode = Array.new()
-          mode << key
-          count = value
-        elsif (value == count)
-          mode << key
-        end 
-      }
-
-      mode.sort
+      determine_mode_values(frequency)      
     end
 
     # method to determine the maximum value of the given data
@@ -83,6 +71,26 @@ module RubyUtils
     # @return [ExtremeValues] the extreme values of the input data
     def self.extreme_values(data)
       ExtremeValues.new(data.min, data.max)
+    end
+
+    # private method to extract the mode values from the frequency
+    # distribution of the data array
+    # @param [Hash] frequency the value distribution of the data values
+    # @return [Array] the mode(s) of the input data
+    private_class_method def self.determine_mode_values(frequency)
+      mode = Array.new()
+      count = 0
+      frequency.each_pair { |key, value|
+        if (value > count)
+          mode = Array.new()
+          mode << key
+          count = value
+        elsif (value == count)
+          mode << key
+        end 
+      }
+
+      mode.sort
     end
 
   end
