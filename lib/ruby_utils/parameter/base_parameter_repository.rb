@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-06-12 10:45:36
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-09-20 13:04:26
+# @Last Modified time: 2021-02-05 20:50:32
 
 require "ruby_utils/string"
 
@@ -29,15 +29,14 @@ module RubyUtils
       def initialize(argv)
         @parameters = Hash.new()
         define_base_mapping
-        @unflagged_arguments = [:file]
-        has_read_file = false
+        @unflagged_arguments = Array.new()
+        raise ArgumentError, " Error: argv is empty".red if (argv.empty?)
         argv.each { |arg|
-          has_read_file?(has_read_file)
-
-          has_read_file =  process_base_argument(arg)
+          process_base_argument(arg)
         }
-
-      check_parameter_handling(@unflagged_arguments.size)
+        if (@unflagged_arguments.size > 0)
+          raise ArgumentError, " Error: invalid combination of parameters.".red
+        end
       end
 
       private
@@ -51,17 +50,18 @@ module RubyUtils
         case arg
           when *@mapping[:help]    then check_and_set_helpvalue
           when *@mapping[:version] then @parameters[:version] = true
+          when *@mapping[:file]    then create_argument_entry(:file)          
           when /-[a-z]|--[a-z]+/ then process_argument(arg)
         else
           check_and_set_argument(@unflagged_arguments.shift, arg)
         end
-
-        return (@unflagged_arguments.size == 0)
+        nil
       end
 
       # method to define the input string values that will match a given paramter symbol
       def define_base_mapping
         @mapping = Hash.new()
+        @mapping[:file] = ['-f', '--file']
         @mapping[:help] = ['-h', '--help']
         @mapping[:version] = ['-v', '--version']
         define_mapping
@@ -117,32 +117,10 @@ module RubyUtils
       def check_and_set_helpvalue
         if(@parameters.keys.last != nil)
           # help in context to a parameter
-          @parameters[:help] = @parameters.keys.last
+          @parameters[:help] = @unflagged_arguments.shift
         else
           # help without parameter => global help
           @parameters[:help] = true
-        end
-      end
-
-      # checks if the filename has already been read
-      # @param [boolean] read_file boolean which is true, when the filename has
-      #  already been read; false, if not.
-      # @raise [ArgumentError] if the file has read and other parameter are still
-      #  following
-      def has_read_file?(read_file)
-        if (read_file)
-            raise ArgumentError, " Error: found filepath: #{@parameters[:file]}," \
-                                 " but there are other arguments left.".red
-        end
-      end
-
-      # checks if all parameters have been handled correctly
-      # only with -h and -v should be the :file element left
-      # @param [Fixnum] size size of the argument array
-      # @raise [ArgumentError] if parameter combination not valid
-      def check_parameter_handling(size)
-        if (size > 0 && !(@parameters[:help] || @parameters[:version]))
-            raise ArgumentError, ' Error: invalid combination of parameters.'.red
         end
       end
 

@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-29 13:39:51
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-09-20 16:54:55
+# @Last Modified time: 2021-02-04 21:04:48
 
 require "spec_helper"
 require_relative "parameter_handler"
@@ -12,7 +12,7 @@ describe RubyUtils::Parameter::ParameterHandler do
   describe ".new" do
     context "given the interval and type flag" do
       it "create the repository and pass the parameter contrains" do
-        arguments = ["-t", "type_field", "-i", 2, 4, "filename"]
+        arguments = ["-t", "type_field", "-i", 2, 4, "-f", "filename"]
         parameter_handler = RubyUtils::Parameter::ParameterHandler.new(arguments)
         expect(parameter_handler.repository.parameters[:type]).to eq("type_field")
       end
@@ -22,7 +22,7 @@ describe RubyUtils::Parameter::ParameterHandler do
   describe ".new" do
     context "given the two element interval flag" do
       it "create the repository and pass the parameter contrains" do
-        arguments = ["-c", 2, 4, "filename"]
+        arguments = ["-c", 2, 4, "-f", "filename"]
         parameter_handler = RubyUtils::Parameter::ParameterHandler.new(arguments)
         expect(parameter_handler.repository.parameters[:compare]).to eq([2, 4])
       end
@@ -32,7 +32,7 @@ describe RubyUtils::Parameter::ParameterHandler do
   describe ".new" do
     context "given the interval and compare flag" do
       it "create the repository and fail the parameter contrains" do
-        arguments = ["-c", 2, 4, "-i", 2, 4, "filename"]
+        arguments = ["-c", 2, 4, "-i", 2, 4, "-f", "filename"]
         expect {
           parameter_handler = RubyUtils::Parameter::ParameterHandler.new(arguments)
         }.to raise_error(ArgumentError)
@@ -43,7 +43,7 @@ describe RubyUtils::Parameter::ParameterHandler do
   describe ".new" do
     context "given a absolute unix file path with relative direction traversal" do
       it "create the repository and pass file path contrains" do
-        arguments = ["/home/things/../files/../files/Ber.d01.TS"]
+        arguments = ["--file", "/home/things/../files/../files/Ber.d01.TS"]
         parameter_handler = RubyUtils::Parameter::ParameterHandler.new(arguments)
         expect(parameter_handler.repository.parameters[:file]).to eq("/home/things/../files/../files/Ber.d01.TS")
       end
@@ -53,7 +53,7 @@ describe RubyUtils::Parameter::ParameterHandler do
   describe ".new" do
     context "given a absolute unix file path with relative direction traversal" do
       it "create the repository and pass file path contrains" do
-        arguments = ["/home/./things/../files/../files/Ber.d01.TS"]
+        arguments = ["-f", "/home/./things/../files/../files/Ber.d01.TS"]
         parameter_handler = RubyUtils::Parameter::ParameterHandler.new(arguments)
         expect(parameter_handler.repository.parameters[:file]).to eq("/home/./things/../files/../files/Ber.d01.TS")
       end
@@ -63,7 +63,7 @@ describe RubyUtils::Parameter::ParameterHandler do
   describe ".new" do
     context "given a relative unix file path" do
       it "create the repository and pass file path contrains" do
-        arguments = ["../files/Ber.d01.TS"]
+        arguments = ["-f", "../files/Ber.d01.TS"]
         parameter_handler = RubyUtils::Parameter::ParameterHandler.new(arguments)
         expect(parameter_handler.repository.parameters[:file]).to eq("../files/Ber.d01.TS")
       end
@@ -73,7 +73,7 @@ describe RubyUtils::Parameter::ParameterHandler do
   describe ".new" do
     context "given a relative unix file path" do
       it "create the repository and pass file path contrains" do
-        arguments = ["./files/Ber.d01.TS"]
+        arguments = ["-f", "./files/Ber.d01.TS"]
         parameter_handler = RubyUtils::Parameter::ParameterHandler.new(arguments)
         expect(parameter_handler.repository.parameters[:file]).to eq("./files/Ber.d01.TS")
       end
@@ -83,7 +83,7 @@ describe RubyUtils::Parameter::ParameterHandler do
   describe ".new" do
     context "given a absolute unix file path" do
       it "create the repository and pass file path contrains" do
-        arguments = ["/home/things/files/Ber.d01.TS"]
+        arguments = ["-f", "/home/things/files/Ber.d01.TS"]
         parameter_handler = RubyUtils::Parameter::ParameterHandler.new(arguments)
         expect(parameter_handler.repository.parameters[:file]).to eq("/home/things/files/Ber.d01.TS")
       end
