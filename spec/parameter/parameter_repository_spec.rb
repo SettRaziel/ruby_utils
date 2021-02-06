@@ -2,12 +2,22 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-28 12:51:27
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-05 20:53:05
+# @Last Modified time: 2021-02-06 17:56:02
 
 require "spec_helper"
 require_relative "parameter_repository"
 
 describe RubyUtils::Parameter::ParameterRepository do
+
+  describe ".new" do
+    context "given the one element type flag" do
+      it "create the repository with the correct flags" do
+        arguments = ["-f", "filename"]
+        parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
+        expect(parameter_repository.parameters[:file]).to eq("filename")
+      end
+    end
+  end
 
   describe ".new" do
     context "given the two element interval flag" do
@@ -43,7 +53,7 @@ describe RubyUtils::Parameter::ParameterRepository do
   describe ".new" do
     context "given several parameter and one parameter missing an argument" do
       it "raise an argument error" do
-        arguments = ["-i", 2, ]
+        arguments = ["-i", 2]
         expect { 
           RubyUtils::Parameter::ParameterRepository.new(arguments)
         }.to raise_error(ArgumentError)
@@ -86,7 +96,7 @@ describe RubyUtils::Parameter::ParameterRepository do
       it "raise an argument error" do
         arguments = ["-t"]
         expect {
-          parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
+          RubyUtils::Parameter::ParameterRepository.new(arguments)
         }.to raise_error(ArgumentError)
       end
     end
@@ -98,7 +108,7 @@ describe RubyUtils::Parameter::ParameterRepository do
       it "create the repository with the correct filename" do
         arguments = ["filename"]
         expect {
-          parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
+          RubyUtils::Parameter::ParameterRepository.new(arguments)
         }.to raise_error(ArgumentError)        
       end
     end
