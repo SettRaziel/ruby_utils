@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-07-20 11:23:58
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-09-20 13:04:13
+# @Last Modified time: 2021-02-07 13:08:17
 
 require "ruby_utils/string"
 
@@ -14,7 +14,7 @@ module RubyUtils
     # application logic.
     # Can raise an ArgumentError or IndexError when invalid parameter arguments
     # or parameter combinations are provided
-    # Will raise an NotImplementedError if the abstract methods are called
+    # Will raise a NotImplementedError if the abstract methods are called
     # without an implementation in a child class
     class BaseParameterHandler
       # @return [ParameterRepository] repository which reads and stores the
@@ -37,7 +37,7 @@ module RubyUtils
       # @raise [NotImplementedError] if the child class does not implement this
       # method
       def initialize_repository(argv)
-              fail NotImplementedError, " Error: the subclass #{self.class} needs " \
+        fail NotImplementedError, " Error: the subclass #{self.class} needs " \
              "to implement the method: initialize_repository from its base class".red
       end
 
@@ -104,7 +104,8 @@ module RubyUtils
           value = @repository.parameters[key]
           if (value.size != count_parameters)
             raise IndexError,
-              " Error: invalid number of parameters for option: #{key} ".red
+              " Error: invalid number of parameters for option: #{key};" \
+              " expected #{count_parameters} got #{value.size}.".red
           end
         end
       end
