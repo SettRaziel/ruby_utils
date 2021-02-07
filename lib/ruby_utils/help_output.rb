@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-07-25 12:17:16
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-09-20 13:05:02
+# @Last Modified time: 2021-02-07 20:44:48
 
 require "ruby_utils/string"
 
@@ -33,9 +33,10 @@ module RubyUtils
     def self.initialize_output
       @parameters = Hash.new()
       add_simple_text(:help, " -h, --help     ", "show help text")
-      add_simple_text(:version,
-                      " -v, --version  ",
+      add_simple_text(:version, " -v, --version  ",
                       "prints the current version of the project")
+      add_single_argument_text(:file, " -f, --file     ", " <file>",
+            "; optional parameter that indicates a filepath to a readable file")
       add_single_help_entries
       add_one_argument_help_entries
       add_two_argument_help_entries
