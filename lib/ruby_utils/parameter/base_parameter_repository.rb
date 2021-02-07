@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-06-12 10:45:36
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-05 20:50:32
+# @Last Modified time: 2021-02-07 12:48:43
 
 require "ruby_utils/string"
 
@@ -24,8 +24,7 @@ module RubyUtils
 
       # initialization
       # @param [Array] argv Array of input parameters
-      # @raise [ArgumentError] if parameters occur after reading the filepath
-      # @raise [ArgumentError] for an invalid combination of script parameters
+      # @raise [ArgumentError] for an invalid or empty combination of script parameters
       def initialize(argv)
         @parameters = Hash.new()
         define_base_mapping
@@ -61,9 +60,9 @@ module RubyUtils
       # method to define the input string values that will match a given paramter symbol
       def define_base_mapping
         @mapping = Hash.new()
-        @mapping[:file] = ['-f', '--file']
-        @mapping[:help] = ['-h', '--help']
-        @mapping[:version] = ['-v', '--version']
+        @mapping[:file] = ["-f", "--file"]
+        @mapping[:help] = ["-h", "--help"]
+        @mapping[:version] = ["-v", "--version"]
         define_mapping
       end
 
@@ -100,6 +99,7 @@ module RubyUtils
       # depending on the check
       # @param [Symbol] arg_key the symbol referencing a parameter
       # @param [String] arg the argument from the input array
+      # @raise [ArgumentError] if the parameter cannot be set up with the arguments
       def check_and_set_argument(arg_key, arg)
         if (arg_key != nil)
           if(@parameters[arg_key] != nil)
@@ -108,7 +108,7 @@ module RubyUtils
             @parameters[arg_key] = arg
           end
         else
-          raise ArgumentError, ' Error: invalid combination of parameters.'.red
+          raise ArgumentError, " Error: invalid arguments for #{arg_key}, got #{arg}.".red
         end
       end
 
@@ -128,7 +128,7 @@ module RubyUtils
       # @param [String] arg invalid parameter string
       # @raise [ArgumentError] if an invalid argument is provided
       def raise_invalid_parameter(arg)
-        raise ArgumentError, " Error: invalid argument: #{arg}".red
+        raise ArgumentError, " Error: invalid or unknown argument: #{arg}".red
       end
 
     end
