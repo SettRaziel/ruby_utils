@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2019-04-07 16:11:30
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-09-20 16:55:03
+# @Last Modified time: 2021-02-06 17:53:30
 
 require "ruby_utils/parameter"
 
@@ -16,12 +16,9 @@ module RubyUtils
       # @param [String] arg the given argument
       def process_argument(arg)
         case arg
-          when "-i", "--interval"
-            create_two_argument_entry(:interval)
-          when "-c", "--compare" 
-            create_two_argument_entry(:compare)
-          when "-t", "--type"
-            create_argument_entry(:type)
+          when *@mapping[:interval]  then create_two_argument_entry(:interval)
+          when *@mapping[:compare]   then create_two_argument_entry(:compare)
+          when *@mapping[:type]      then create_argument_entry(:type)
           else
             raise_invalid_parameter(arg)
         end
