@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-28 12:51:27
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-06 17:56:02
+# @Last Modified time: 2021-02-08 22:27:50
 
 require "spec_helper"
 require_relative "parameter_repository"
@@ -46,6 +46,16 @@ describe RubyUtils::Parameter::ParameterRepository do
         expect { 
           RubyUtils::Parameter::ParameterRepository.new(arguments)
         }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
+  describe ".new" do
+    context "given the two element interval flag with only one argument" do
+      it "raise sees the interval parameter as the last parameter and shows its help" do
+        arguments = ["-i", 2, "-h", "--compare", 2, 4, "filename"]
+        parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
+        expect(parameter_repository.parameters[:help]).to eq(:interval)
       end
     end
   end
@@ -148,6 +158,16 @@ describe RubyUtils::Parameter::ParameterRepository do
   end
 
   describe ".new" do
+    context "given the version flag as parameter an a random argument" do
+      it "set the flag for version output" do
+        arguments = ["-v", "filename"]
+        parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
+        expect(parameter_repository.parameters[:version]).to eq(true)
+      end
+    end
+  end
+
+    describe ".new" do
     context "given the version flag as parameter" do
       it "set the flag for version output" do
         arguments = ["-v"]
@@ -168,9 +188,29 @@ describe RubyUtils::Parameter::ParameterRepository do
   end
 
   describe ".new" do
+    context "given the help flag as parameter and a random argument" do
+      it "set the flag for help output but raise an ArgumentError since there are invalid parameters" do
+        arguments = ["-h", "filename"]
+        parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
+        expect(parameter_repository.parameters[:help]).to eq(true)
+      end
+    end
+  end
+
+  describe ".new" do
     context "given the help flag as parameter" do
       it "set the flag for help output" do
         arguments = ["-h"]
+        parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
+        expect(parameter_repository.parameters[:help]).to eq(true)
+      end
+    end
+  end
+
+  describe ".new" do
+    context "given the help flag as parameter" do
+      it "set the flag for help output" do
+        arguments = ["-h", "-f", "filename"]
         parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
         expect(parameter_repository.parameters[:help]).to eq(true)
       end

@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-06-12 10:45:36
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-07 12:48:43
+# @Last Modified time: 2021-02-08 22:25:47
 
 require "ruby_utils/string"
 
@@ -107,7 +107,7 @@ module RubyUtils
           else
             @parameters[arg_key] = arg
           end
-        else
+        elsif (parameters[:help] == nil && @parameters[:version] == nil)
           raise ArgumentError, " Error: invalid arguments for #{arg_key}, got #{arg}.".red
         end
       end
