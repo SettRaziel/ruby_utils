@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2019-04-07 16:08:35
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-09-20 16:54:03
+# @Last Modified time: 2021-02-09 20:47:13
 
 require "ruby_utils/parameter"
 require_relative "parameter_repository"
@@ -37,6 +37,8 @@ module RubyUtils
         end
         # check parameters that should not occur together
         check_constraint(:interval, :compare)
+        # check mandatory file parameter
+        check_mandatory_parameter(:file)
       end
 
     end

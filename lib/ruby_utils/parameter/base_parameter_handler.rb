@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-07-20 11:23:58
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-07 13:08:17
+# @Last Modified time: 2021-02-09 20:44:08
 
 require "ruby_utils/string"
 
@@ -61,6 +61,7 @@ module RubyUtils
       def base_validate_parameters
         check_for_valid_filepath if (@repository.parameters[:file])
         validate_parameters
+        nil
       end
 
       # checks if the parsed filename is a valid unix or windows file name  
@@ -92,6 +93,7 @@ module RubyUtils
         if (!(filepath =~ unixfile_regex || filepath =~ windowsfile_regex))
           raise ArgumentError, " Error: invalid filepath: #{filepath}".red
         end
+        nil
       end
 
       # checks the correct number of parameters for the given key
@@ -108,6 +110,7 @@ module RubyUtils
               " expected #{count_parameters} got #{value.size}.".red
           end
         end
+        nil
       end
 
       # checks if the second parameter is required when the first symbol occurs,
@@ -122,12 +125,13 @@ module RubyUtils
                 " Error: #{@repository.mapping[symbol]} requires the parameters" \
                 " of #{@repository.mapping[required]}".red
         end
+        nil
       end
 
       # creates a constraint error if an invalid parameter combination occurs,
       # with the exception when the help parameter is used
       # @param [Symbol] invalid the invalid symbol
-      # @param [Symbol] symbol the symbol that need the othner symbol
+      # @param [Symbol] symbol the symbol that need the other symbol
       # @raise [ArgumentError] for an invalid parameter combination
       def check_constraint(invalid, symbol)
         if (@repository.parameters[symbol] && @repository.parameters[invalid] && 
@@ -135,6 +139,19 @@ module RubyUtils
           raise ArgumentError, " Error: invalid parameter combination: " \
                 " #{@repository.mapping[symbol]} and #{@repository.mapping[invalid]}".red
         end
+        nil
+      end
+
+      # method to check mandatory parameters, throws an ArgumentError if the parameter
+      # has no been set
+      # @param [Symbol] symbol the mandatory symbol
+      # @raise [ArgumentError] if the symbol is missing
+      def check_mandatory_parameter(symbol)
+        if (@repository.parameters[symbol] == nil)
+          raise ArgumentError,
+                "Error: #{@repository.mapping[symbol]} is mandatory, but missing"
+        end
+        nil
       end
 
     end

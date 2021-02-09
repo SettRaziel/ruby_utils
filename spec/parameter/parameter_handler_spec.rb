@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-29 13:39:51
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-05 20:59:53
+# @Last Modified time: 2021-02-09 20:49:00
 
 require "spec_helper"
 require_relative "parameter_handler"
@@ -33,6 +33,17 @@ describe RubyUtils::Parameter::ParameterHandler do
     context "given the interval and compare flag" do
       it "create the repository and fail the parameter contrains" do
         arguments = ["-c", 2, 4, "-i", 2, 4, "-f", "filename"]
+        expect {
+          RubyUtils::Parameter::ParameterHandler.new(arguments)
+        }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
+  describe ".new" do
+    context "given the interval flag" do
+      it "create the repository and fail the mandatory parameter check for the file flag" do
+        arguments = ["-i", 2, 4]
         expect {
           RubyUtils::Parameter::ParameterHandler.new(arguments)
         }.to raise_error(ArgumentError)
