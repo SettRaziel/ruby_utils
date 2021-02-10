@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-06-12 10:45:36
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-08 22:25:47
+# @Last Modified time: 2021-02-10 20:31:19
 
 require "ruby_utils/string"
 
@@ -117,7 +117,8 @@ module RubyUtils
       def check_and_set_helpvalue
         if(@parameters.keys.last != nil)
           # help in context to a parameter
-          @parameters[:help] = @unflagged_arguments.shift
+          @parameters[:help] = @parameters.keys.last
+          @unflagged_arguments.shift
         else
           # help without parameter => global help
           @parameters[:help] = true

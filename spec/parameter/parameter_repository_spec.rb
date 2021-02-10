@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-28 12:51:27
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-08 22:27:50
+# @Last Modified time: 2021-02-10 20:32:01
 
 require "spec_helper"
 require_relative "parameter_repository"
@@ -167,12 +167,22 @@ describe RubyUtils::Parameter::ParameterRepository do
     end
   end
 
-    describe ".new" do
+  describe ".new" do
     context "given the version flag as parameter" do
       it "set the flag for version output" do
         arguments = ["-v"]
         parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
         expect(parameter_repository.parameters[:version]).to eq(true)
+      end
+    end
+  end
+
+  describe ".new" do
+    context "given the version flag as parameter" do
+      it "set the flag for version output" do
+        arguments = ["-v", "-h", "filename"]
+        parameter_repository = RubyUtils::Parameter::ParameterRepository.new(arguments)
+        expect(parameter_repository.parameters[:help]).to eq(:version)
       end
     end
   end
