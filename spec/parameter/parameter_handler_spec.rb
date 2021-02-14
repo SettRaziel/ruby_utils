@@ -2,7 +2,7 @@
 # @Author: Benjamin Held
 # @Date:   2020-02-29 13:39:51
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-09 20:49:00
+# @Last Modified time: 2021-02-14 21:58:58
 
 require "spec_helper"
 require_relative "parameter_handler"
@@ -97,6 +97,26 @@ describe RubyUtils::Parameter::ParameterHandler do
         arguments = ["-f", "/home/things/files/Ber.d01.TS"]
         parameter_handler = RubyUtils::Parameter::ParameterHandler.new(arguments)
         expect(parameter_handler.repository.parameters[:file]).to eq("/home/things/files/Ber.d01.TS")
+      end
+    end
+  end
+
+  describe ".new" do
+    context "given the version flag" do
+      it "create the repository and set the version flag" do
+        arguments = ["-v"]
+        parameter_handler = RubyUtils::Parameter::ParameterHandler.new(arguments)
+        expect(parameter_handler.repository.parameters[:version]).to eq(true)
+      end
+    end
+  end
+
+  describe ".new" do
+    context "given the help flag" do
+      it "create the repository and set the help flag" do
+        arguments = ["-h"]
+        parameter_handler = RubyUtils::Parameter::ParameterHandler.new(arguments)
+        expect(parameter_handler.repository.parameters[:help]).to eq(true)
       end
     end
   end

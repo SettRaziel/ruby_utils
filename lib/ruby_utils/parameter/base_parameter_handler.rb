@@ -1,7 +1,7 @@
 # @Author: Benjamin Held
 # @Date:   2015-07-20 11:23:58
 # @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-09 20:44:08
+# @Last Modified time: 2021-02-14 22:02:51
 
 require "ruby_utils/string"
 
@@ -147,7 +147,8 @@ module RubyUtils
       # @param [Symbol] symbol the mandatory symbol
       # @raise [ArgumentError] if the symbol is missing
       def check_mandatory_parameter(symbol)
-        if (@repository.parameters[symbol] == nil)
+        if (@repository.parameters[symbol] == nil && !@repository.parameters[:help] &&
+            !@repository.parameters[:version])
           raise ArgumentError,
                 "Error: #{@repository.mapping[symbol]} is mandatory, but missing"
         end
