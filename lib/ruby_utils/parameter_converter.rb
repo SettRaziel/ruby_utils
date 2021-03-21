@@ -1,9 +1,3 @@
-#!/usr/bin/ruby
-# @Author: Benjamin Held
-# @Date:   2020-03-18 17:03:25
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-11-07 19:01:10
-
 require "ruby_utils/string"
 require "time"
 

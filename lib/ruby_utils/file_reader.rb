@@ -1,8 +1,3 @@
-# @Author: Benjamin Held
-# @Date:   2015-05-30 21:00:25
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-09-20 13:04:51
-
 require "csv"
 require "ruby_utils/string"
 

@@ -1,8 +1,3 @@
-# @Author: Benjamin Held
-# @Date:   2016-04-24 18:33:55
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-11-18 19:17:40
-
 module RubyUtils
 
   # This class holds methods to apply statistical functions of the provided data
