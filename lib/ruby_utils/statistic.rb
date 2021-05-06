@@ -68,6 +68,18 @@ module RubyUtils
       ExtremeValues.new(data.min, data.max)
     end
 
+    # method to determine the empiric variance for the given data
+    # @param [Array] data a list of values
+    # @return [Float] the empiric variance of the input data
+    def self.variance(data)
+      mean_value = mean_value(data)
+      variance = 0.0
+      data.each { |value|
+        variance += (value - mean_value)**2        
+      }
+      variance / (data.length - 1)
+    end
+
     # private method to extract the mode values from the frequency
     # distribution of the data array
     # @param [Hash] frequency the value distribution of the data values

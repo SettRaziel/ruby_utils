@@ -92,4 +92,13 @@ describe RubyUtils::Statistic do
     end
   end
 
+  describe "#variance" do
+    context "given an array of values" do
+      it "calculate the empiric variance" do
+        data = [1.0, 2.0, 3.0, 1.0, 4.0, 5.0, 3.0, 5.0, 3.5, 6.3]
+        expect(RubyUtils::Statistic.variance(data).round(3)).to eq(3.077)
+      end
+    end
+  end
+  
 end
