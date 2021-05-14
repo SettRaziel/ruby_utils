@@ -1,9 +1,3 @@
-#!/usr/bin/ruby
-# @Author: Benjamin Held
-# @Date:   2020-02-27 19:33:36
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-07 20:47:53
-
 require "spec_helper"
 require_relative "help_output"
 

@@ -1,8 +1,3 @@
-# @Author: Benjamin Held
-# @Date:   2019-04-07 16:11:30
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-06 17:53:30
-
 require "ruby_utils/parameter"
 
 module RubyUtils

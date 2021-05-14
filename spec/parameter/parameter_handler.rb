@@ -1,8 +1,3 @@
-# @Author: Benjamin Held
-# @Date:   2019-04-07 16:08:35
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-09 20:47:13
-
 require "ruby_utils/parameter"
 require_relative "parameter_repository"
 

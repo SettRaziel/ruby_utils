@@ -1,9 +1,3 @@
-#!/usr/bin/ruby
-# @Author: Benjamin Held
-# @Date:   2020-02-28 12:51:27
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-10 20:32:01
-
 require "spec_helper"
 require_relative "parameter_repository"
 

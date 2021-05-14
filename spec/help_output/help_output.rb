@@ -1,9 +1,3 @@
-#!/usr/bin/ruby
-# @Author: Benjamin Held
-# @Date:   2020-02-26 15:51:34
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2020-09-20 16:53:27
-
 require "ruby_utils/help_output"
 
 module RubyUtils

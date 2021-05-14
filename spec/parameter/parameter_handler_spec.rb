@@ -1,9 +1,3 @@
-#!/usr/bin/ruby
-# @Author: Benjamin Held
-# @Date:   2020-02-29 13:39:51
-# @Last Modified by:   Benjamin Held
-# @Last Modified time: 2021-02-14 21:58:58
-
 require "spec_helper"
 require_relative "parameter_handler"
 
