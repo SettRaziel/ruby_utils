@@ -1,9 +1,9 @@
-require "ruby_utils/help_output"
+require "ruby_utils/base_help_output"
 
 module RubyUtils
 
   # Example implementation of the abstract class for tests
-  class HelpOutput < BasicHelpOutput
+  class HelpOutput < BaseHelpOutput
 
     private
 

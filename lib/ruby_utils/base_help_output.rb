@@ -3,7 +3,7 @@ require "ruby_utils/string"
 module RubyUtils
 
   # Abstract output class for help text
-  class BasicHelpOutput
+  class BaseHelpOutput
 
     # method to print the help text for the given parameter
     # @param [Symbol] parameter provided parameter
