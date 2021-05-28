@@ -12,4 +12,4 @@ updates:
     reviewers:
       - "SettRaziel"
     versioning-strategy: "increase"
-    target-branch: "develop"
+    target-branch: "development"
