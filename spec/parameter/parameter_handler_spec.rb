@@ -115,4 +115,26 @@ describe RubyUtils::Parameter::ParameterHandler do
     end
   end
 
+  describe ".new" do
+    context "given the file flag" do
+      it "create the repository and fail the mandatory parameter check for the file path" do
+        arguments = ["-f", "::::"]
+        expect {
+          RubyUtils::Parameter::ParameterHandler.new(arguments)
+        }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
+  describe ".new" do
+    context "given the type and file flag" do
+      it "create the repository and fail the mandatory occurence check for type and compare" do
+        arguments = ["--type", "foo", "-f", "./files/Ber.d01.TS"]
+        expect {
+          RubyUtils::Parameter::ParameterHandler.new(arguments)
+        }.to raise_error(ArgumentError)
+      end
+    end
+  end
+
 end
