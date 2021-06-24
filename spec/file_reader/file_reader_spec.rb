@@ -57,4 +57,14 @@ describe RubyUtils::FileReader do
     end
   end
 
+  describe ".new" do
+    context "given a non existing file path" do
+      it "fail when trying to read the file" do
+      expect {
+        RubyUtils::FileReader.new(File.join(__dir__, "FOO"), " ")
+      }.to raise_error(IOError)
+      end
+    end
+  end
+
 end
