@@ -36,7 +36,7 @@ describe RubyUtils::FileReader do
   describe ".new" do
     context "given a wrf formatted output file" do
       it "read the csv file correctly" do
-        data = RubyUtils::FileReader.new(File.join(__dir__, "Ber.d01.TS"), " ").data
+        data = RubyUtils::FileReader.new(File.join(__dir__, "Ber_d01_TS"), " ").data
         expect(data.size).to eq(6)
         expect(data[0].size).to eq(15)
         expect(data[5].size).to eq(19)
@@ -47,7 +47,7 @@ describe RubyUtils::FileReader do
   describe ".new" do
     context "given a wrf formatted output file" do
       it "read the csv file correctly" do
-        data = RubyUtils::FileReader.new(File.join(__dir__, "Ber.d01.TS"), " ").data
+        data = RubyUtils::FileReader.new(File.join(__dir__, "Ber_d01_TS"), " ").data
         expect(data[0][0]).to eq("Berlin")
         expect(data[1][1].to_f).to eq(0.002778)
         expect(data[2][2].to_i).to eq(5)
