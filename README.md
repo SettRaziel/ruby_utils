@@ -5,7 +5,7 @@
 
 This project holds a collection of common scripts and data structures for usage in other ruby projects.
 
-Current version: v0.1.1
+Current version: v0.2.0
 
 ## Usage & Help
 The scripts and classes will be imported in other projects, so there will be not explicit usage.
