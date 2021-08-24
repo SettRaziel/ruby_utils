@@ -9,7 +9,7 @@ describe RubyUtils::HelpOutput do
         expect { 
           RubyUtils::HelpOutput.print_help_for(:file) 
         }.to output("script name help:".light_yellow + "\n" + \
-                    " -f, --file     ".light_blue + "argument:".red + " <file>".yellow  + \
+                    " -f, --file      ".light_blue + "argument:".red + " <file>".yellow  + \
                     "; optional parameter that indicates a filepath to a readable file\n").to_stdout
       end
     end
@@ -53,9 +53,9 @@ describe RubyUtils::HelpOutput do
         expect { 
           RubyUtils::HelpOutput.print_help_for(true)
         }.to output("script name head" + "\n" + \
-                    " -h, --help     ".light_blue + "show help text\n" + \
-                    " -v, --version  ".light_blue + "prints the current version of the project\n" + \
-                    " -f, --file     ".light_blue + "argument:".red + " <file>".yellow  + \
+                    " -h, --help      ".light_blue + "show help text\n" + \
+                    " -v, --version   ".light_blue + "prints the current version of the project\n" + \
+                    " -f, --file      ".light_blue + "argument:".red + " <file>".yellow  + \
                     "; optional parameter that indicates a filepath to a readable file\n" + \
                     "-a".light_blue + "help text\n" + \
                     "-b".light_blue + "argument:".red + "<b>".yellow  + "help text\n" + \

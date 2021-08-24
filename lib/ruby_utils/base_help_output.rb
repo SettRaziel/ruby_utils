@@ -27,10 +27,10 @@ module RubyUtils
     # method to initialize the hash containing the help entries
     def self.initialize_output
       @parameters = Hash.new()
-      add_simple_text(:help, " -h, --help     ", "show help text")
-      add_simple_text(:version, " -v, --version  ",
+      add_simple_text(:help, " -h, --help      ", "show help text")
+      add_simple_text(:version, " -v, --version   ",
                       "prints the current version of the project")
-      add_single_argument_text(:file, " -f, --file     ", " <file>",
+      add_single_argument_text(:file, " -f, --file      ", " <file>",
             "; optional parameter that indicates a filepath to a readable file")
       add_single_help_entries
       add_one_argument_help_entries
