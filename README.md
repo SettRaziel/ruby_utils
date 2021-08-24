@@ -1,7 +1,6 @@
 # Ruby utils
-[![Build Status](https://travis-ci.org/SettRaziel/ruby_utils.svg?branch=master)](https://travis-ci.org/SettRaziel/ruby_utils)
+[![Ruby](https://github.com/SettRaziel/ruby_utils/actions/workflows/ruby.yml/badge.svg?branch=development)](https://github.com/SettRaziel/ruby_utils/actions/workflows/ruby.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/418567cd132f98b4941c/maintainability)](https://codeclimate.com/github/SettRaziel/ruby_utils/maintainability)
-[![Coverage Status](https://coveralls.io/repos/github/SettRaziel/ruby_utils/badge.svg?branch=master)](https://coveralls.io/github/SettRaziel/ruby_utils?branch=master)
 
 This project holds a collection of common scripts and data structures for usage in other ruby projects.
 
