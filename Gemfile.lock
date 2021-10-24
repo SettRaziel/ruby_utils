@@ -6,7 +6,7 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    csv (3.2.0)
+    csv (3.2.1)
     diff-lcs (1.4.4)
     docile (1.4.0)
     rake (13.0.6)
@@ -35,8 +35,8 @@ PLATFORMS
 
 DEPENDENCIES
   csv
-  rake (~> 13.0, >= 13.0.1)
-  rspec (~> 3.9, >= 3.9.0)
+  rake (>= 13.0.1)
+  rspec (>= 3.9.0)
   ruby_utils!
   simplecov
 
