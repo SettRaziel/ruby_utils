@@ -1,5 +1,6 @@
 require "spec_helper"
 require_relative "parameter_handler"
+require_relative "faulty_parameter_handler"
 
 describe RubyUtils::Parameter::ParameterHandler do
 
@@ -19,6 +20,17 @@ describe RubyUtils::Parameter::ParameterHandler do
         arguments = ["-c", 2, 4, "-f", "filename"]
         parameter_handler = RubyUtils::Parameter::ParameterHandler.new(arguments)
         expect(parameter_handler.repository.parameters[:compare]).to eq([2, 4])
+      end
+    end
+  end
+
+  describe ".new" do
+    context "given the two element interval flag" do
+      it "pass three elements, create the repository and fail check for element count" do
+        expect {
+        arguments = ["-c", 2, 4, "-f", "filename"]
+          RubyUtils::Parameter::FaultyParameterHandler.new(arguments)
+        }.to raise_error(IndexError)
       end
     end
   end
