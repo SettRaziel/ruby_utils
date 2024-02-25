@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = "ruby_utils"
-  s.version       = "0.2.1"
+  s.version       = "0.2.2"
   s.summary       = "Ruby utils collection"
   s.description   = "Collection of common scripts and data structures for usage in other ruby projects"
   s.authors       = ["Benjamin Held"]
