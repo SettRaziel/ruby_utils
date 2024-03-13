@@ -12,4 +12,14 @@ describe RubyUtils::Configuration::BaseConfigurationRepository do
     end
   end
 
+  describe ".new" do
+    context "given a an invalid file path" do
+      it "try to create the repository and fail the opening step for the filepath" do
+        expect { 
+          RubyUtils::Configuration::BaseConfigurationRepository.new("test")
+        }.to raise_error(SystemCallError)      
+      end
+    end
+  end
+
 end
