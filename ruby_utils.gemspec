@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = "ruby_utils"
-  s.version       = "0.3.0"
+  s.version       = "0.4.0"
   s.summary       = "Ruby utils collection"
   s.description   = "Collection of common scripts and data structures for usage in other ruby projects"
   s.authors       = ["Benjamin Held"]
@@ -12,6 +12,8 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.required_ruby_version = ">= 2.4"
+
+  s.add_dependency "csv", "~> 3.2", "> 3.2.8"
 
   s.add_development_dependency "rake", "~> 13.0", ">= 13.0.1"
   s.add_development_dependency "rspec", "~> 3.9", ">= 3.9.1"
