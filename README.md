@@ -4,14 +4,14 @@
 
 This project holds a collection of common scripts and data structures for usage in other ruby projects.
 
-Current version: v0.3.0
+Current version: v0.4.0
 
 ## Usage & Help
 The scripts and classes will be imported in other projects, so there will be not explicit usage.
 For details check the documentation.
 
 ## Documentation
-The documentation will be created with yard and published at a later point.
+[ruby_utils](https://bheld.eu/doc/rubyutils_doc/index.html)
 
 ## Used version
 Written with Ruby 2.4.0
@@ -23,8 +23,7 @@ Written with Ruby 2.4.0
 
 ## Requirements
 * Ruby with a version >= 2.4.0
-* yard (for documentation only)
-* csv (for reading input files)
+* see Gemfile and ruby_utils.gemspec
 
 ## License
 see LICENSE
