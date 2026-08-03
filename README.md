@@ -11,7 +11,8 @@ The scripts and classes will be imported in other projects, so there will be not
 For details check the documentation.
 
 ## Documentation
-[ruby_utils](https://bheld.eu/doc/rubyutils_doc/index.html)
+Documentation is written in yard and can be created by running the shell-script `create_yard.sh`. Yard needs to be installed on the system in order to do that.
+The documentation can also be found online [here](https://bheld.eu/doc/rubyutils_doc/index.html).
 
 ## Used version
 Written with Ruby 2.4.0
