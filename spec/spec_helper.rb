@@ -17,7 +17,7 @@
 
 begin
   require "simplecov"
-  SimpleCov.minimum_coverage_by_file(90)
+  SimpleCov.coverage(:line) { minimum 90, per: :file }
   SimpleCov.start
 rescue LoadError; end
 
